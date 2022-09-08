@@ -5,7 +5,7 @@ $this->add_module_info("expense", [
     'description' => 'Expense',
     'icon' => 'fas fa-chart-pie',
     'path' => '/transactions/expenses',
-    'class_str'=> 'text-primary border-primary'
+    'class_str'=> 'text-red-600 border-red-600'
 ]);
 
 
