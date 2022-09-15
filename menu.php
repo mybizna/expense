@@ -4,7 +4,7 @@ $this->add_module_info("expense", [
     'title' => 'Expense',
     'description' => 'Expense',
     'icon' => 'fas fa-chart-pie',
-    'path' => '/expense/admin/expense',
+    'path' => 'expense.admin.expense',
     'class_str'=> 'text-red-600 border-red-600'
 ]);
 
