@@ -1,5 +1,5 @@
 <?php
-
+/*
 $this->add_module_info("expense", [
     'title' => 'Expense',
     'description' => 'Expense',
@@ -13,5 +13,5 @@ $this->add_module_info("expense", [
 $this->add_menu("expense", "transactions", "New Expense", "/expenses", "fas fa-cogs", 5);
 $this->add_menu("expense", "transactions-new", "Expenses", "/expenses/new", "fas fa-cogs", 5);
 
-//$this->add_submenu("module", "key", "title","path", "position");
+//$this->add_submenu("module", "key", "title","path", "position");*/
 
