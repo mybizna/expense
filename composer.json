@@ -6,20 +6,22 @@
     "license": "GPL-3.0-or-later",
     "authors": [
         {
-            "name": "Dedan Irungu",
-"homepage": "https://mybizna.com",
+            "name": "Mybizna",
+            "homepage": "https://mybizna.com",
             "email": "info@mybizna.com"
+        },
+        {
+            "name": "Dedan Irungu",
+            "email": "dedanirungu@gmail.com"
         }
-        ],
+    ],
     "require": {
         "mybizna/core": "^0.5"
     },
     "extra": {
         "laravel": {
             "providers": [],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {
