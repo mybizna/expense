@@ -1,4 +1,7 @@
 <?php
+
+/** @var \Modules\Base\Classes\Fetch\Menus $this */
+
 /*
 $this->add_module_info("expense", [
     'title' => 'Expense',
