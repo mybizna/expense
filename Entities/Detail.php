@@ -2,34 +2,40 @@
 
 namespace Modules\Expense\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
-
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class Detail extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['trn_no', 'ledger_id', 'particulars', 'amount'];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The fields that can be filled
-     * @var array<string>
+     *
+     * @var string
      */
     protected $table = "expense_detail";
 
-
-    public function  listTable(): ListTable
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @return ListTable
+     */
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -39,13 +45,17 @@ class Detail extends BaseModel
         $fields->name('particulars')->type('text')->ordering(true);
         $fields->name('amount')->type('text')->ordering(true);
 
-
         return $fields;
 
     }
-    
+
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
-{
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -54,11 +64,15 @@ class Detail extends BaseModel
         $fields->name('particulars')->type('text')->group('w-1/2');
         $fields->name('amount')->type('text')->group('w-1/2');
 
-
         return $fields;
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -77,7 +91,7 @@ class Detail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->integer('trn_no')->nullable();
