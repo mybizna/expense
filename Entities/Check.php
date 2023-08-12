@@ -17,6 +17,13 @@ class Check extends BaseModel
     protected $fillable = ['trn_no', 'check_no', 'voucher_type', 'amount', 'bank', 'name', 'pay_to'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['trn_no'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -54,7 +61,7 @@ class Check extends BaseModel
 
     /**
      * Function for defining list of fields in form view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -76,7 +83,7 @@ class Check extends BaseModel
 
     /**
      * Function for defining list of fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder
