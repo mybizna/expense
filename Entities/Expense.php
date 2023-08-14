@@ -3,8 +3,6 @@
 namespace Modules\Expense\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class Expense extends BaseModel
@@ -42,95 +40,27 @@ class Expense extends BaseModel
     protected $table = "expense";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('voucher_no')->type('text')->ordering(true);
-        $fields->name('people_id')->type('text')->ordering(true);
-        $fields->name('people_name')->type('text')->ordering(true);
-        $fields->name('address')->type('text')->ordering(true);
-        $fields->name('trn_date')->type('text')->ordering(true);
-        $fields->name('amount')->type('text')->ordering(true);
-        $fields->name('ref')->type('text')->ordering(true);
-        $fields->name('check_no')->type('text')->ordering(true);
-
-        return $fields;
-
-    }
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('voucher_no')->type('text')->group('w-1/2');
-        $fields->name('people_id')->type('text')->group('w-1/2');
-        $fields->name('people_name')->type('text')->group('w-1/2');
-        $fields->name('address')->type('text')->group('w-1/2');
-        $fields->name('trn_date')->type('text')->group('w-1/2');
-        $fields->name('amount')->type('text')->group('w-1/2');
-        $fields->name('ref')->type('text')->group('w-1/2');
-        $fields->name('check_no')->type('text')->group('w-1/2');
-        $fields->name('particulars')->type('text')->group('w-1/2');
-        $fields->name('status')->type('switch')->group('w-1/2');
-        $fields->name('trn_by')->type('text')->group('w-1/2');
-        $fields->name('transaction_charge')->type('text')->group('w-1/2');
-        $fields->name('trn_by_ledger_id')->type('text')->group('w-1/2');
-        $fields->name('attachments')->type('text')->group('w-1/2');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('voucher_no')->type('text')->group('w-1/6');
-        $fields->name('people_id')->type('text')->group('w-1/6');
-        $fields->name('people_name')->type('text')->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
-        $table->increments('id');
-        $table->integer('voucher_no')->nullable();
-        $table->integer('people_id')->nullable();
-        $table->string('people_name')->nullable();
-        $table->string('address')->nullable();
-        $table->date('trn_date')->nullable();
-        $table->decimal('amount', 20, 2)->default(0.00);
-        $table->string('ref')->nullable();
-        $table->string('check_no')->nullable();
-        $table->string('particulars')->nullable();
-        $table->integer('status')->nullable();
-        $table->integer('trn_by')->nullable();
-        $table->decimal('transaction_charge', 20, 2)->default(0.00);
-        $table->integer('trn_by_ledger_id')->nullable();
-        $table->string('attachments')->nullable();
+        $this->fields->increments('id')->html('text');
+        $this->fields->integer('voucher_no')->nullable()->html('text');
+        $this->fields->integer('people_id')->nullable()->html('text');
+        $this->fields->string('people_name')->nullable()->html('text');
+        $this->fields->string('address')->nullable()->html('text');
+        $this->fields->date('trn_date')->nullable()->html('date');
+        $this->fields->decimal('amount', 20, 2)->default(0.00)->html('amount');
+        $this->fields->string('ref')->nullable()->html('textarea');
+        $this->fields->string('check_no')->nullable()->html('text');
+        $this->fields->string('particulars')->nullable()->html('textarea');
+        $this->fields->integer('status')->nullable()->html('text');
+        $this->fields->integer('trn_by')->nullable()->html('text');
+        $this->fields->decimal('transaction_charge', 20, 2)->default(0.00)->html('amount');
+        $this->fields->integer('trn_by_ledger_id')->nullable()->html('text');
+        $this->fields->string('attachments')->nullable()->html('files');
     }
 }
