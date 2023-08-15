@@ -45,10 +45,10 @@ class Expense extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->integer('voucher_no')->nullable()->html('text');
         $this->fields->integer('people_id')->nullable()->html('text');
@@ -64,5 +64,18 @@ class Expense extends BaseModel
         $this->fields->decimal('transaction_charge', 20, 2)->default(0.00)->html('amount');
         $this->fields->integer('trn_by_ledger_id')->nullable()->html('text');
         $this->fields->string('attachments')->nullable()->html('files');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['voucher_no', 'people_id', 'trn_date', 'amount', 'status', 'trn_by', 'transaction_charge', 'trn_by_ledger_id'],
+            'filter' => ['voucher_no', 'people_id', 'trn_date', 'status', 'trn_by', 'trn_by_ledger_id'],
+        ];
+
+        return $structure;
     }
 }

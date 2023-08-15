@@ -41,7 +41,7 @@ class Detail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -50,5 +50,18 @@ class Detail extends BaseModel
         $this->fields->integer('ledger_id')->nullable()->html('recordpicker')->table(['account', 'ledger']);
         $this->fields->string('particulars')->nullable()->html('textarea');
         $this->fields->decimal('amount', 20, 2)->default(0.00)->html('amount');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['trn_no', 'ledger_id', 'amount'],
+            'filter' => ['trn_no','ledger_id', 'amount'],
+        ];
+
+        return $structure;
     }
 }

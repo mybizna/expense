@@ -41,10 +41,10 @@ class Check extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->integer('trn_no')->nullable()->html('text');
         $this->fields->string('check_no')->nullable()->html('text');
@@ -53,6 +53,19 @@ class Check extends BaseModel
         $this->fields->string('bank')->nullable()->html('text');
         $this->fields->string('name')->nullable()->html('text');
         $this->fields->string('pay_to')->nullable()->html('text');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['trn_no', 'check_no', 'voucher_type', 'amount', 'bank', 'name', 'pay_to'],
+            'filter' => ['trn_no', 'check_no', 'voucher_type', 'bank', 'name'],
+        ];
+
+        return $structure;
     }
 
 }
