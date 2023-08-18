@@ -71,10 +71,8 @@ class Expense extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['voucher_no', 'people_id', 'trn_date', 'amount', 'status', 'trn_by', 'transaction_charge', 'trn_by_ledger_id'],
-            'filter' => ['voucher_no', 'people_id', 'trn_date', 'status', 'trn_by', 'trn_by_ledger_id'],
-        ];
+        $structure['table'] = ['voucher_no', 'people_id', 'trn_date', 'amount', 'status', 'trn_by', 'transaction_charge', 'trn_by_ledger_id'];
+        $structure['filter'] = ['voucher_no', 'people_id', 'trn_date', 'status', 'trn_by', 'trn_by_ledger_id'];
 
         return $structure;
     }

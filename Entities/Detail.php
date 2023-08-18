@@ -44,7 +44,7 @@ class Detail extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->integer('trn_no')->nullable()->html('text');
         $this->fields->integer('ledger_id')->nullable()->html('recordpicker')->relation(['account', 'ledger']);
@@ -57,10 +57,8 @@ class Detail extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['trn_no', 'ledger_id', 'amount'],
-            'filter' => ['trn_no','ledger_id', 'amount'],
-        ];
+        $structure['table'] = ['trn_no', 'ledger_id', 'amount'];
+        $structure['filter'] = ['trn_no', 'ledger_id', 'amount'];
 
         return $structure;
     }

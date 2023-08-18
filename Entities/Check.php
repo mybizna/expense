@@ -60,10 +60,8 @@ class Check extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['trn_no', 'check_no', 'voucher_type', 'amount', 'bank', 'name', 'pay_to'],
-            'filter' => ['trn_no', 'check_no', 'voucher_type', 'bank', 'name'],
-        ];
+        $structure['table'] = ['trn_no', 'check_no', 'voucher_type', 'amount', 'bank', 'name', 'pay_to'];
+        $structure['filter'] = ['trn_no', 'check_no', 'voucher_type', 'bank', 'name'];
 
         return $structure;
     }
