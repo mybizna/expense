@@ -49,7 +49,7 @@ class Expense extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->integer('voucher_no')->nullable()->html('text');
         $this->fields->integer('people_id')->nullable()->html('text');
         $this->fields->string('people_name')->nullable()->html('text');
