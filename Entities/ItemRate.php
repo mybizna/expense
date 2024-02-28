@@ -69,9 +69,9 @@ class ItemRate extends BaseModel
     {
         $structure['table'] = ['title', 'slug', 'rate_id', 'expense_item_id', 'method', 'value', 'ordering', 'on_total'];
         $structure['form'] = [
-            ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
-            ['label' => 'Expense Item Rate', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['slug', 'rate_id', 'expense_item_id', 'method']],
-            ['label' => 'Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['value', 'ordering', 'on_total']],
+            ['label' => 'Expense Item Rate Title', 'class' => 'col-span-full', 'fields' => ['title']],
+            ['label' => 'Expense Item Rate Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['slug', 'rate_id', 'expense_item_id', 'method']],
+            ['label' => 'Other Expense Item Rate Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['value', 'ordering', 'on_total']],
         ];
         $structure['filter'] = ['title', 'slug', 'rate_id', 'expense_item_id', 'method'];
 

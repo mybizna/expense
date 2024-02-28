@@ -79,9 +79,9 @@ class Expense extends BaseModel
     {
         $structure['table'] = ['title', 'expense_no', 'partner_id', 'due_date', 'status', 'is_posted', 'total'];
         $structure['form'] = [
-            ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
-            ['label' => 'Expense', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['expense_no', 'partner_id', 'due_date']],
-            ['label' => 'Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['status', 'is_posted', 'total']],
+            ['label' => 'Expense Title', 'class' => 'col-span-full', 'fields' => ['title']],
+            ['label' => 'Expense Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['expense_no', 'partner_id', 'due_date']],
+            ['label' => 'Other Expense Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['status', 'is_posted', 'total']],
         ];
         $structure['filter'] = ['title', 'expense_no', 'partner_id', 'due_date', 'status'];
 
