@@ -19,19 +19,6 @@ class Item extends BaseModel
     ];
 
     /**
-     * The fields that are to be render when performing relationship queries.
-     *
-     * @var array<string>
-     */
-    public $rec_names = ['title'];
-
-    /**
-     * List of tables names that are need in this model during migration.
-     *
-     * @var array<string>
-     */
-    public array $migrationDependancy = ['expense', 'account_ledger'];
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -61,37 +48,9 @@ class Item extends BaseModel
         $this->fields->integer('quantity')->nullable()->html('number');
     }
 
-    /**
-     * List of structure for this model.
-     */
-    public function structure($structure): array
-    {
-        $structure['table'] = ['title', 'expense_id', 'ledger_id', 'price', 'amount', 'quantity'];
-        $structure['form'] = [
-            ['label' => 'Expense Item Title', 'class' => 'col-span-full', 'fields' => ['title']],
-            ['label' => 'Expense Item Details', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['expense_id', 'ledger_id', 'quantity']],
-            ['label' => 'Expense Item Amount', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['price', 'amount']],
-        ];
-        $structure['filter'] = ['title', 'expense_id', 'ledger_id'];
-
-        return $structure;
-    }
+    
 
 
-    /**
-     * Define rights for this model.
-     *
-     * @return array
-     */
-    public function rights(): array
-    {
-        $rights = parent::rights();
 
-        $rights['staff'] = ['view' => true];
-        $rights['registered'] = [];
-        $rights['guest'] = [];
-
-        return $rights;
-    }
 
 }
