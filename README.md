@@ -20,7 +20,7 @@ The Expense module offers a range of features to simplify expense management. So
 To leverage these features, access the MyBizna ERP application and navigate to the Expense module. Explore the available options to streamline your organization's expense management processes and enhance financial visibility.
 
 ## Requirements
-Mybizna ERP version 1.0 or above
+Mybizna ERP version 2024.1 or above
 
 ## Support
 If you have any questions or need assistance, please contact our support team. We're always happy to help!
