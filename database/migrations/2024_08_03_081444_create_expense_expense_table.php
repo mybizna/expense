@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('expense_no', 100);
-            $table->bigInteger('partner_id')->nullable();
+            $table->foreignId('partner_id')->nullable();
             $table->date('due_date');
             $table->string('module')->default('Account');
             $table->string('model')->default('Expense');
