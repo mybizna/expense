@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->foreignId('expense_id')->constrained('expense_expense')->onDelete('cascade')->index('expense_id');
-            $table->foreignId('ledger_id')->constrained('account_ledger')->onDelete('cascade')->index('ledger_id');
+            $table->foreignId('expense_id')->constrained('expense_expense')->onDelete('cascade')->index('expense_item_expense_id');
+            $table->foreignId('ledger_id')->constrained('account_ledger')->onDelete('cascade')->index('expense_item_ledger_id');
             $table->decimal('price', 20, 2)->default(0.00);
             $table->decimal('amount', 20, 2)->default(0.00);
             $table->string('module')->nullable();

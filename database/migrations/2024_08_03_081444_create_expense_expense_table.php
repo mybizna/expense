@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('expense_no', 100);
-            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('partner_id');
+            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('expense_expense_partner_id');
             $table->date('due_date');
             $table->string('module')->default('Account');
             $table->string('model')->default('Expense');
@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->tinyInteger('is_posted')->default(0);
             $table->decimal('total', 20, 2)->nullable();
-      
-            
+
             $table->timestamps();
         });
     }
