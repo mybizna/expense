@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Expense\Entities;
+namespace Modules\Expense\Models;
 
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Expense extends BaseModel
 {
@@ -22,6 +22,5 @@ class Expense extends BaseModel
      * @var string
      */
     protected $table = "expense";
-
 
 }

@@ -1,10 +1,8 @@
 <?php
 
-namespace Modules\Expense\Entities;
+namespace Modules\Expense\Models;
 
-use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Migration;
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Item extends BaseModel
 {
@@ -24,11 +22,5 @@ class Item extends BaseModel
      * @var string
      */
     protected $table = "expense_item";
-
-
-    
-
-
-
 
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Expense\Entities;
+namespace Modules\Expense\Models;
 
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class ItemRate extends BaseModel
 {
