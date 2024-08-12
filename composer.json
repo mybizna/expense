@@ -26,7 +26,14 @@
   },
   "autoload": {
     "psr-4": {
-      "Modules\\Expense\\": ""
+      "Modules\\Expense\\": "app/",
+      "Modules\\Expense\\Database\\Factories\\": "database/factories/",
+      "Modules\\Expense\\Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Expense\\Tests\\": "tests/"
     }
   }
 }
