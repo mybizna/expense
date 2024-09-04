@@ -2,9 +2,6 @@
 
 namespace Modules\Expense\Filament\Resources;
 
-use Modules\Expense\Filament\Resources\ItemResource\Pages;
-use Modules\Expense\Filament\Resources\ItemResource\RelationManagers;
-use Modules\Expense\Models\Item;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +9,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Expense\Filament\Resources\ItemResource\Pages;
+use Modules\Expense\Models\Item;
 
 class ItemResource extends Resource
 {
     protected static ?string $model = Item::class;
+
+    protected static ?string $slug = 'expense/item';
+
+    protected static ?string $navigationGroup = 'Expense';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

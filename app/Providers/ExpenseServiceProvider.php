@@ -9,7 +9,7 @@ class ExpenseServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'Expense';
 
-    protected string $moduleNameLower = 'Expense';
+    protected string $moduleNameLower = 'expense';
 
     /**
      * Boot the application events.

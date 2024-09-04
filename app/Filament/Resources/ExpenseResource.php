@@ -2,20 +2,22 @@
 
 namespace Modules\Expense\Filament\Resources;
 
-use Modules\Expense\Filament\Resources\ExpenseResource\Pages;
-use Modules\Expense\Filament\Resources\ExpenseResource\RelationManagers;
-use Modules\Expense\Models\Expense;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Expense\Filament\Resources\ExpenseResource\Pages;
+use Modules\Expense\Models\Expense;
 
 class ExpenseResource extends Resource
 {
     protected static ?string $model = Expense::class;
+
+    protected static ?string $slug = 'expense/expense';
+
+    protected static ?string $navigationGroup = 'Expense';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

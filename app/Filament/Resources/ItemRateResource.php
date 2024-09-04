@@ -2,9 +2,6 @@
 
 namespace Modules\Expense\Filament\Resources;
 
-use Modules\Expense\Filament\Resources\ItemRateResource\Pages;
-use Modules\Expense\Filament\Resources\ItemRateResource\RelationManagers;
-use Modules\Expense\Models\ItemRate;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +9,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Expense\Filament\Resources\ItemRateResource\Pages;
+use Modules\Expense\Models\ItemRate;
 
 class ItemRateResource extends Resource
 {
     protected static ?string $model = ItemRate::class;
+
+    protected static ?string $slug = 'expense/item/rate';
+
+    protected static ?string $navigationGroup = 'Expense';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
