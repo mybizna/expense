@@ -2,7 +2,9 @@
 
 namespace Modules\Expense\Models;
 
+use Modules\Account\Models\Ledger;
 use Modules\Base\Models\BaseModel;
+use Modules\Expense\Models\Expense;
 
 class Item extends BaseModel
 {
@@ -23,4 +25,22 @@ class Item extends BaseModel
      * @var string
      */
     protected $table = "expense_item";
+
+    /**
+     * Add relationship to Expense
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function expense()
+    {
+        return $this->belongsTo(Expense::class);
+    }
+
+    /**
+     * Add relationship to Ledger
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ledger()
+    {
+        return $this->belongsTo(Ledger::class);
+    }
 }
