@@ -23,7 +23,7 @@ class Expense extends BaseModel
      *
      * @var string
      */
-    protected $table = "expense";
+    protected $table = "expense_expense";
 
     /**
      * Add relationship to Partner
