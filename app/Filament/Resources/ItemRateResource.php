@@ -4,15 +4,12 @@ namespace Modules\Expense\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Expense\Filament\Resources\ItemRateResource\Pages;
+use Modules\Base\Filament\Resources\BaseResource;
 use Modules\Expense\Models\ItemRate;
 
-class ItemRateResource extends Resource
+class ItemRateResource extends BaseResource
 {
     protected static ?string $model = ItemRate::class;
 
@@ -107,27 +104,4 @@ class ItemRateResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListItemRates::route('/'),
-            'create' => Pages\CreateItemRate::route('/create'),
-            'edit' => Pages\EditItemRate::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
 }
