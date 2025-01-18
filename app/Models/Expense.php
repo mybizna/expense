@@ -1,15 +1,23 @@
 <?php
-
 namespace Modules\Expense\Models;
 
+use Base\Casts\Money;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Models\BaseModel;
 use Modules\Partner\Models\Partner;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Expense extends BaseModel
 {
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'total' => Money::class, // Use the custom MoneyCast
+    ];
     /**
      * The fields that can be filled
      *
@@ -36,10 +44,8 @@ class Expense extends BaseModel
         return $this->belongsTo(Partner::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('title');
         $table->string('expense_no', 100);
@@ -50,7 +56,8 @@ class Expense extends BaseModel
         $table->enum('status', ['draft', 'pending', 'partial', 'paid', 'closed', 'void'])->default('draft');
         $table->string('description')->nullable();
         $table->tinyInteger('is_posted')->default(0);
-        $table->decimal('total', 20, 2)->nullable();
+        $table->integer('total')->nullable();
+        $table->string('currency')->default('USD');
 
     }
 }

@@ -1,16 +1,24 @@
 <?php
-
 namespace Modules\Expense\Models;
 
+use Base\Casts\Money;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Account\Models\Rate;
 use Modules\Base\Models\BaseModel;
-use Modules\Expense\Models\ExpenseItem;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Expense\Models\Item;
 
 class ItemRate extends BaseModel
 {
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'total' => Money::class, // Use the custom MoneyCast
+    ];
     /**
      * The fields that can be filled
      *
@@ -34,7 +42,7 @@ class ItemRate extends BaseModel
 
     public function expenseItem(): BelongsTo
     {
-        return $this->belongsTo(ExpenseItem::class);
+        return $this->belongsTo(Item::class);
     }
 
     /**
@@ -47,17 +55,16 @@ class ItemRate extends BaseModel
         return $this->belongsTo(Rate::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('title');
         $table->string('slug');
         $table->foreignId('rate_id')->nullable()->constrained('account_rate')->onDelete('set null');
         $table->foreignId('expense_item_id')->nullable()->constrained('expense_item')->onDelete('set null');
         $table->enum('method', ['+', '+%', '-', '-%'])->default('+');
-        $table->decimal('value', 20, 2)->default(0.00);
+        $table->integer('value')->default(0);
+        $table->string('currency')->default('USD');
         $table->string('params')->nullable();
         $table->tinyInteger('ordering')->nullable();
         $table->tinyInteger('on_total')->default(false);

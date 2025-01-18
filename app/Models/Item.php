@@ -1,16 +1,24 @@
 <?php
-
 namespace Modules\Expense\Models;
 
+use Base\Casts\Money;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Account\Models\Ledger;
 use Modules\Base\Models\BaseModel;
 use Modules\Expense\Models\Expense;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends BaseModel
 {
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'total' => Money::class, // Use the custom MoneyCast
+    ];
     /**
      * The fields that can be filled
      *
@@ -48,13 +56,13 @@ class Item extends BaseModel
 
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('title');
         $table->foreignId('expense_id')->nullable()->constrained(table: 'expense_expense')->onDelete('set null');
         $table->foreignId('ledger_id')->nullable()->constrained(table: 'account_ledger')->onDelete('set null');
-        $table->decimal('price', 20, 2)->default(0.00);
-        $table->decimal('amount', 20, 2)->default(0.00);
+        $table->integer('price')->default(0);
+        $table->integer('amount')->default(0);
+        $table->string('currency')->default('USD');
         $table->string('module')->nullable();
         $table->string('model')->nullable();
         $table->bigInteger('item_id')->nullable();
