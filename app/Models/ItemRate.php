@@ -60,8 +60,8 @@ class ItemRate extends BaseModel
 
         $table->string('title');
         $table->string('slug');
-        $table->foreignId('rate_id')->nullable()->constrained('account_rate')->onDelete('set null');
-        $table->foreignId('expense_item_id')->nullable()->constrained('expense_item')->onDelete('set null');
+        $table->unsignedBigInteger('rate_id')->nullable();
+        $table->unsignedBigInteger('expense_item_id')->nullable();
         $table->enum('method', ['+', '+%', '-', '-%'])->default('+');
         $table->integer('value')->default(0);
         $table->string('currency')->default('USD');
@@ -69,5 +69,11 @@ class ItemRate extends BaseModel
         $table->tinyInteger('ordering')->nullable();
         $table->tinyInteger('on_total')->default(false);
 
+    }
+
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('rate_id')->references('id')->on('account_rate')->onDelete('set null');
+        $table->foreign('expense_item_id')->references('id')->on('expense_item')->onDelete('set null');
     }
 }
